@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tolibjon Full-Stack Developer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box
+    }
+    
+    html{
+    scroll-behavior:smooth
+    }
+    
+    body{
+    font-family:'Poppins',sans-serif;
+    color:white;
+    overflow:hidden;
+    
+    background:linear-gradient(270deg,#020024,#090979,#001f3f,#000);
+    background-size:600% 600%;
+    animation:bgmove 20s ease infinite;
+    }
+
+    @keyframes bgmove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.main{
+display:flex;
+height:100vh
+}
+
+.left{
+width:35%;
+padding:40px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+height:100vh;
+overflow-y:auto
+}
+
+.right{
+width:65%;
+height:100vh;
+overflow-y:auto;
+padding:80px 60px
+}
+
+
+.footer{
+margin-top:100px;
+text-align:center;
+opacity:.7
+}
+
+hr{
+border:none;
+height:1px;
+background:#222;
+margin-bottom:20px
+}
+
+
+    /* cards */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:35px
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border-radius:20px;
+padding:28px;
+transition:.5s;
+backdrop-filter:blur(8px)
+}
+
+.card:hover{
+transform:translateY(-12px) scale(1.05);
+box-shadow:0 0 40px rgba(0,170,255,.35)
+}
+
+.links{
+margin-top:10px
+}
+
+.links a{
+display:inline-block;
+padding:8px 16px;
+border-radius:20px;
+border:1px solid #0af;
+color:#0af;
+text-decoration:none;
+font-size:13px;
+transition:.3s
+}
+
+.links a:hover{
+background:#0af;
+color:black
+}
+
+
+.cursor-light{
+position:fixed;
+width:400px;
+height:400px;
+background:radial-gradient(circle,#00aaff55,transparent 70%);
+pointer-events:none;
+mix-blend-mode:screen;
+transform:translate(-50%,-50%);
+z-index:0
+}
+
+
+.footer{
+margin-top:100px;
+text-align:center;
+opacity:.7
+}
+
+hr{
+border:none;
+height:1px;
+background:#222;
+margin-bottom:200px
+}
+
+</style>
+</head>
+<body>
+    <div class="cards">
+
+        <div class="card">
+        <h3>Portfolio Website</h3>
+        <p>Modern responsive portfolio website.</p>
+        <div class="links">
+        <a href="https://tolibjonshurhatov.github.io/Tolibjon-Developer/">Website</a>
+        </div>
+        </div>
+        
+        <div class="card">
+        <h3>Quran Website</h3>
+        <p>Quran listening website.</p>
+        <div class="links">
+        <a href="https://tolibjonshurhatov.github.io/quran.uz/">Website</a>
+        </div>
+        </div>
+        
+        <div class="card">
+          <h3>My client's web site</h3>
+          <p>Quran listening website.</p>
+          <div class="links">
+          <a href="https://tolibjonshurhatov.github.io/A.X.B-DESIGN-/">Website</a>
+          </div>
+          </div>
+        
+          <div class="card">
+            <h3>Portfolio website 2</h3>
+            <p>Modern responsive portfolio website.</p>
+            <div class="links">
+            <a href="https://tolibjonshurhatov.github.io/Tolibjon-Portfolio-home/">Website</a>
+            </div>
+            </div>
+        
+        
+        <div class="card">
+           <h3>Quran Website 2</h3>
+           <p>Quran listening website.</p>
+             <div class="links">
+               <a href="https://tolibjonshurhatov.github.io/quran/">Website</a>
+            </div>
+        </div>
+        
+        <div class="card">
+          <h3>Quran Telegram bot </h3>
+          <p>Quran listening bot</p>
+            <div class="links">
+              <a href="https://t.me/shukhratovtolibjon_bot">Telegram bot</a>
+           </div>
+        </div>
+        
+        <div class="links">
+          <a href="index.html">Go back</a>
+          </div>
+            <hr>
+          <div class="footer">
+            <hr>
+            <p>Tolibjon — Full Stack Developer</p>
+            </div>
+              
+        </div>
+        
+        </div>
+
+        <script>
+
+            const container=document.getElementById("scroll")
+            const sections=document.querySelectorAll(".section")
+            const navLinks=document.querySelectorAll(".nav a")
+            
+            navLinks.forEach(link=>{
+            link.addEventListener("click",e=>{
+            e.preventDefault()
+            
+            const target=document.querySelector(link.getAttribute("href"))
+            
+            container.scrollTo({
+            top:target.offsetTop,
+            behavior:"smooth"
+            })
+            })
+            })
+            
+            container.addEventListener("scroll",()=>{
+            
+            let current=""
+            
+            sections.forEach(section=>{
+            
+            const sectionTop = section.offsetTop
+            const sectionHeight = section.offsetHeight
+            
+            if(container.scrollTop >= sectionTop - 200 &&
+            container.scrollTop < sectionTop + sectionHeight - 200){
+            
+            current = section.getAttribute("id")
+            
+            }
+            
+            })
+            
+            navLinks.forEach(a=>{
+            a.classList.remove("active")
+            if(a.getAttribute("href")==="#"+current){
+            a.classList.add("active")
+            }
+            })
+            
+            })
+            const observer=new IntersectionObserver(entries=>{
+            entries.forEach(entry=>{
+            if(entry.isIntersecting){
+            entry.target.classList.add("show")
+            }
+            })
+            })
+            
+            document.querySelectorAll(".section").forEach(el=>{
+            observer.observe(el)
+            })
+            
+            /* cursor light */
+            
+            const light=document.querySelector(".cursor-light")
+            
+            document.addEventListener("mousemove",e=>{
+            light.style.left=e.clientX+"px"
+            light.style.top=e.clientY+"px"
+            })
+            
+            
+            const text = "Hello, I'm Tolibjon — a Full Stack Developer who enjoys building modern web applications and powerful backend systems. I work with Python, frontend technologies, and databases."
+            
+            let index = 0
+            
+            function typeAbout(){
+            
+            if(index < text.length){
+            
+            document.getElementById("typing-about").textContent += text.charAt(index)
+            
+            index++
+            
+            setTimeout(typeAbout,35)
+            
+            }
+            
+            }
+            
+            typeAbout()
+            
+            
+            </script>
+
+
+
+</body>
